@@ -3,12 +3,12 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
-    android:padding="10dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/menuIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_gravity="center"
         android:gravity="center" />
 

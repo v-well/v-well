@@ -33,26 +33,18 @@ public class CommonViewService {
 		IconicFontDrawable homeIcon = new IconicFontDrawable(context);
 		homeIcon.setIcon(EntypoIcon.HOME);
 		homeIcon.setIconColor(0xFFFFFFFF);
-		homeIcon.setIntrinsicHeight(35);
-		homeIcon.setIntrinsicWidth(35);
 		
 		IconicFontDrawable noteIcon = new IconicFontDrawable(context);
 		noteIcon.setIcon(EntypoIcon.OPEN_BOOK);
 		noteIcon.setIconColor(0xFFFFFFFF);
-		noteIcon.setIntrinsicHeight(35);
-		noteIcon.setIntrinsicWidth(35);
 		
 		IconicFontDrawable locationIcon = new IconicFontDrawable(context);
 		locationIcon.setIcon(EntypoIcon.LOCATION);
 		locationIcon.setIconColor(0xFFFFFFFF);
-		locationIcon.setIntrinsicHeight(35);
-		locationIcon.setIntrinsicWidth(35);
 		
 		IconicFontDrawable searchIcon = new IconicFontDrawable(context);
 		searchIcon.setIcon(EntypoIcon.SEARCH);
 		searchIcon.setIconColor(0xFFFFFFFF);
-		searchIcon.setIntrinsicHeight(35);
-		searchIcon.setIntrinsicWidth(35);
 		
 		if (exceptId != Menu.ID_HOME) {
 			menuIcons.add(new Menu(Menu.ID_HOME, homeIcon));
