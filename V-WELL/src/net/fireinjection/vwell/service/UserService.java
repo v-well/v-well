@@ -3,6 +3,7 @@ package net.fireinjection.vwell.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.fireinjection.vwell.HealthActivity;
 import net.fireinjection.vwell.model.User;
 import android.content.Context;
 
@@ -14,6 +15,9 @@ import com.googlecode.androidannotations.api.Scope;
 public class UserService {
 	@RootContext Context context;
 
+	private HealthActivity healthActivity;
+	private User currentUser;
+	
 	public List<User> getUsers() {
 		// TODO using dao..
 		
@@ -33,6 +37,22 @@ public class UserService {
 		list.add(new User(12, "이한솔", null));
 		
 		return list;
+	}
+
+	public void setCurrentUser(User user) {
+		this.currentUser = user;
+	}
+	
+	public User getCurrentUser(){
+		return this.currentUser;
+	}
+
+	public void setHealthActivity(HealthActivity healthActivity) {
+		this.healthActivity = healthActivity;
+	}
+
+	public void openUserHealthActivity() {
+		healthActivity.startUserHealthActivity();
 	}
 	
 }
