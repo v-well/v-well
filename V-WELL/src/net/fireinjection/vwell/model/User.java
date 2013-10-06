@@ -1,9 +1,13 @@
 package net.fireinjection.vwell.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName="User")
 public class User {
-	private int id;
-	private String name;
-	private String imageUrl;
+	@DatabaseField(columnName = "userId", generatedId=true) private Integer id;
+	@DatabaseField private String name;
+	@DatabaseField private String imageUrl;
 	
 	public User(){}
 	
@@ -13,10 +17,10 @@ public class User {
 		this.imageUrl = imageUrl;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
