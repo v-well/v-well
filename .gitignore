@@ -3,3 +3,6 @@ V-WELL/.project
 V-WELL/bin
 android-support-v4.jar
 V-WELL/gen
+V-WELL/.apt_generated
+V-WELL/.settings
+.factorypath
