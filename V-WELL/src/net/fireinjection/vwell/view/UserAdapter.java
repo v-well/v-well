@@ -50,4 +50,9 @@ public class UserAdapter extends BaseAdapter {
 		this.items = items;
 		notifyDataSetChanged();
 	}
+	
+	public void addItem(User user) {
+		this.items.add(user);
+		notifyDataSetChanged();
+	}
 }

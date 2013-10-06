@@ -11,8 +11,7 @@ public class User {
 	
 	public User(){}
 	
-	public User(int id, String name, String imageUrl){
-		this.id = id;
+	public User(String name, String imageUrl){
 		this.name = name;
 		this.imageUrl = imageUrl;
 	}

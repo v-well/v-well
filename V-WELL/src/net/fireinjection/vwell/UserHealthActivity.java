@@ -8,6 +8,7 @@ import android.app.Activity;
 import com.googlecode.androidannotations.annotations.AfterInject;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Bean;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.Fullscreen;
 
@@ -38,4 +39,19 @@ public class UserHealthActivity extends Activity {
 		}
 	}
 
+	@Click(R.id.insertUserButton)
+	void clickInsertUserButton(){
+		User user = null;
+		userService.addUser(user);
+		finish();
+	}
+
+	@Click(R.id.updateUserButton)
+	void clickUpdateUserButton(){
+		User user = userService.getCurrentUser();
+		if(user != null){
+			userService.updateUser(user);
+		}
+		finish();
+	}
 }

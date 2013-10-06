@@ -67,18 +67,9 @@ public class DataInitService {
 	private List<User> getUserList(){
 		List<User> list = new ArrayList<User>();
 
-		list.add(new User(1, "이재경", null));
-		list.add(new User(2, "한준구", null));
-		list.add(new User(3, "김영필", null));
-		list.add(new User(4, "이한솔", null));
-		list.add(new User(5, "이재경", null));
-		list.add(new User(6, "한준구", null));
-		list.add(new User(7, "김영필", null));
-		list.add(new User(8, "이한솔", null));
-		list.add(new User(9, "이재경", null));
-		list.add(new User(10, "한준구", null));
-		list.add(new User(11, "김영필", null));
-		list.add(new User(12, "이한솔", null));
+		list.add(new User("이재경", null));
+		list.add(new User("한준구", null));
+		list.add(new User("김영필", null));
 		
 		return list;
 	}
