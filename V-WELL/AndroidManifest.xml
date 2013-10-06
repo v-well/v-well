@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="14"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -29,6 +29,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="net.fireinjection.vwell.HealthActivity_"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <activity
+            android:name="net.fireinjection.vwell.MapActivity_"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <activity
+            android:name="net.fireinjection.vwell.SearchActivity_"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
     </application>
 
 </manifest>
