@@ -14,8 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.atermenji.android.iconicdroid.IconicFontDrawable;
-import com.atermenji.android.iconicdroid.icon.EntypoIcon;
 import com.googlecode.androidannotations.annotations.AfterInject;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Bean;
@@ -44,17 +42,16 @@ public class HealthActivity extends Activity {
 		userService.setHealthActivity(this);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@AfterViews
 	void afterViews(){
 		initActionBar();
 		initUserList();
 		
-		IconicFontDrawable addIcon = new IconicFontDrawable(this);
-		addIcon.setIcon(EntypoIcon.PLUS);
-		addIcon.setIconColor(0xffff0000);
-		addIcon.setIconPadding(15);
-		userAddButton.setBackgroundDrawable(addIcon);
+//		IconicFontDrawable addIcon = new IconicFontDrawable(this);
+//		addIcon.setIcon(EntypoIcon.PLUS);
+//		addIcon.setIconColor(0xffff0000);
+//		addIcon.setIconPadding(15);
+//		userAddButton.setBackgroundDrawable(addIcon);
 	}
 	
 	private void initUserList(){

@@ -7,14 +7,15 @@
         android:id="@+id/userImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/ic_launcher" />
+        android:layout_margin="5dp"
+        android:src="@drawable/user_no_pic" />
 
     <TextView
         android:id="@+id/userNameView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_gravity="center_vertical"
+        android:layout_weight="1"
         android:textSize="30sp" />
 
     <Button

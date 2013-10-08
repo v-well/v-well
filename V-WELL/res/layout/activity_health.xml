@@ -16,16 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:gravity="center"
             android:background="#22000000"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical" >
 
             <Button
                 android:id="@+id/userAddButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal" />
-            
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/user_add" />
         </LinearLayout>
     </FrameLayout>
 
