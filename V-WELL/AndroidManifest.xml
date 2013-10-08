@@ -38,6 +38,9 @@
         <activity
             android:name="net.fireinjection.vwell.SearchActivity_"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <activity
+            android:name="net.fireinjection.vwell.UserHealthActivity_"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
     </application>
 
 </manifest>
