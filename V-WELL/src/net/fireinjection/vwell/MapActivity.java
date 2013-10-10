@@ -45,6 +45,23 @@ public class MapActivity extends Activity implements MapView.OpenAPIKeyAuthentic
 		mapView.setDaumMapApiKey("869c84e170c5368debc24cd86791c6b6531c3193");
 		mapView.setOpenAPIKeyAuthenticationResultListener(this);
 		mapView.setPOIItemEventListener(this);
+		
+//		mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.38573255, 127.12568610), true);
+//		mapView.setZoomLevel(4, true);
+		mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(37.38573255, 127.12568610), 1, true);
+		
+		MapPOIItem poiItem1 = new MapPOIItem();
+		poiItem1.setItemName("신영팰리스타워");
+		poiItem1.setMapPoint(MapPoint.mapPointWithGeoCoord(37.38573255, 127.12568610));
+		poiItem1.setMarkerType(MapPOIItem.MarkerType.BluePin);
+		poiItem1.setShowAnimationType(MapPOIItem.ShowAnimationType.DropFromHeaven);
+		poiItem1.setShowCalloutBalloonOnTouch(true);
+		poiItem1.setDraggable(true);
+		poiItem1.setTag(153);
+		mapView.addPOIItem(poiItem1);
+		
+		mapView.fitMapViewAreaToShowAllPOIItems();
+		
 		mapContentLayout.addView(mapView);
 		
 		mapView.fitMapViewAreaToShowAllPOIItems();
