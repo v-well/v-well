@@ -3,7 +3,11 @@ package net.fireinjection.vwell;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+import net.fireinjection.vwell.model.AroundResponseData;
+import net.fireinjection.vwell.model.AroundResponseData.ResponseData.HealthCenters;
+import net.fireinjection.vwell.model.AroundResponseData.ResponseData.Hospitals;
 import net.fireinjection.vwell.model.Menu;
+import net.fireinjection.vwell.service.AroundDataService;
 import net.fireinjection.vwell.service.CommonViewService;
 import net.fireinjection.vwell.view.MenuAdapter;
 import android.app.ActionBar;
@@ -31,43 +35,68 @@ public class MapActivity extends Activity implements MapView.OpenAPIKeyAuthentic
 	
 	@Bean MenuAdapter menuAdapter;
 	@Bean CommonViewService commonViewService;
+	@Bean AroundDataService aroundDataService;
 	
 	private MapView mapView;
 
 	@AfterInject
-	void afterInject(){}
+	void afterInject(){
+	}
 	
 	@AfterViews
 	void afterViews(){
 		initActionBar();
 	
 		mapView = new MapView(this);
-		mapView.setDaumMapApiKey("869c84e170c5368debc24cd86791c6b6531c3193");
+		mapView.setDaumMapApiKey("949ac12236291052b84eac91db759f04fb1ee72b");
 		mapView.setOpenAPIKeyAuthenticationResultListener(this);
 		mapView.setPOIItemEventListener(this);
 		
-//		mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.38573255, 127.12568610), true);
-//		mapView.setZoomLevel(4, true);
-		mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(37.38573255, 127.12568610), 1, true);
+		// 현재 위치, 서현동 신영팰리스타워
+		Double lat = 37.38573255;
+		Double lnt = 127.12568610;
 		
-		MapPOIItem poiItem1 = new MapPOIItem();
-		poiItem1.setItemName("신영팰리스타워");
-		poiItem1.setMapPoint(MapPoint.mapPointWithGeoCoord(37.38573255, 127.12568610));
-		poiItem1.setMarkerType(MapPOIItem.MarkerType.BluePin);
-		poiItem1.setShowAnimationType(MapPOIItem.ShowAnimationType.DropFromHeaven);
-		poiItem1.setShowCalloutBalloonOnTouch(true);
-		poiItem1.setDraggable(true);
-		poiItem1.setTag(153);
-		mapView.addPOIItem(poiItem1);
-		
-		mapView.fitMapViewAreaToShowAllPOIItems();
+		initMapData(initMapData(lat, lnt));
 		
 		mapContentLayout.addView(mapView);
-		
 		mapView.fitMapViewAreaToShowAllPOIItems();
-	
+		mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(lat, lnt), 2, true);
+		
 	}
 	
+	private void initMapData(AroundResponseData data) {
+		for (HealthCenters healthCenter : data.getResponseData().getHealthCenters()) {
+			MapPOIItem mapPOIItem = new MapPOIItem();
+			mapPOIItem.setItemName(healthCenter.getName());
+			mapPOIItem.setMapPoint(MapPoint.mapPointWithGeoCoord(
+					healthCenter.getLocation().getLat(),
+					healthCenter.getLocation().getLng()));
+			mapPOIItem.setMarkerType(MapPOIItem.MarkerType.RedPin);
+			mapPOIItem.setShowAnimationType(MapPOIItem.ShowAnimationType.DropFromHeaven);
+			mapPOIItem.setShowCalloutBalloonOnTouch(true);
+			mapPOIItem.setDraggable(false);
+			mapPOIItem.setTag(153);
+			this.mapView.addPOIItem(mapPOIItem);
+		}
+		for (Hospitals hospitals : data.getResponseData().getHospitals()) {
+			MapPOIItem mapPOIItem = new MapPOIItem();
+			mapPOIItem.setItemName(hospitals.getName());
+			mapPOIItem.setMapPoint(MapPoint.mapPointWithGeoCoord(
+					hospitals.getLocation().getLat(),
+					hospitals.getLocation().getLng()));
+			mapPOIItem.setMarkerType(MapPOIItem.MarkerType.BluePin);
+			mapPOIItem.setShowAnimationType(MapPOIItem.ShowAnimationType.DropFromHeaven);
+			mapPOIItem.setShowCalloutBalloonOnTouch(true);
+			mapPOIItem.setDraggable(false);
+			mapPOIItem.setTag(153);
+			this.mapView.addPOIItem(mapPOIItem);
+		}
+	}
+
+	private AroundResponseData initMapData(Double lat, Double lng) {
+		return aroundDataService.getDatas(lat, lng);
+	}
+
 	private void initActionBar(){
 		menuAdapter.setItems(commonViewService.getMenuItems(Menu.ID_LOCATION));
 		menuListView.setAdapter(menuAdapter);
@@ -129,4 +158,5 @@ public class MapActivity extends Activity implements MapView.OpenAPIKeyAuthentic
 	public void onDaumMapOpenAPIKeyAuthenticationResult(MapView arg0, int arg1, String arg2) {
 		
 	}
+
 }

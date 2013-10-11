@@ -3,6 +3,7 @@ package net.fireinjection.vwell;
 import net.fireinjection.vwell.service.DataInitService;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.StrictMode;
 import android.view.View;
 
 import com.googlecode.androidannotations.annotations.AfterInject;
@@ -21,6 +22,8 @@ public class MainActivity extends Activity {
 	
 	@AfterInject
 	void afterInject(){
+		initNet();
+		
 		dataInitService.cleanData();
 		dataInitService.initializeUsers();
 	}
@@ -41,5 +44,16 @@ public class MainActivity extends Activity {
 	void clickSearchButton(View view){
 		Intent intent = new Intent(this, SearchActivity_.class);
 		this.startActivity(intent);
+	}
+	
+	void initNet() {
+		if (android.os.Build.VERSION.SDK_INT > 9) {
+			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		System.exit(-1);
 	}
 }
