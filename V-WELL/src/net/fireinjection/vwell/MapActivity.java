@@ -38,7 +38,7 @@ public class MapActivity extends Activity implements MapView.OpenAPIKeyAuthentic
 	@Bean AroundDataService aroundDataService;
 	
 	private MapView mapView;
-
+	
 	@AfterInject
 	void afterInject(){
 	}
